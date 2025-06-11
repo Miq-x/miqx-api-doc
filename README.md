@@ -40,14 +40,14 @@ APIキーは運が良ければ「まぐろ」に依頼することで取得で�
 
 指定したアイコンでコラ画を作成
 
-- **URL**: `{host}/make`
+- **URL**: `https://api.miqx.jp/v1/make`
 - **Method**: `POST`
+- **認証**: Bearer Token
 
 ### パラメーター
 
 | パラメーター | 説明                              | 必須 |
 | ------------ | --------------------------------- | ---- |
-| `key`        | APIキー                           | ✅   |
 | `param`      | パラメーター（例："mono"）        | ✅   |
 | `name`       | 発言者の名前                      | ✅   |
 | `text`       | 発言                              | ✅   |
@@ -56,6 +56,12 @@ APIキーは運が良ければ「まぐろ」に依頼することで取得で�
 | `img`        | アイコン画像（PNG/JPG、バイナリ） | ✅   |
 | `meta`       | LINE絵文字描画用(後述)            | ❌   |
 | `stamp`      | LINEスタンプ描画用(後述)          | ❌   |
+
+### 認証ヘッダー
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
 
 <details>
 <summary>LINEでのみ使用可能な機能はこちら</summary>
@@ -137,15 +143,21 @@ gifフィールドはLineの動くスタンプ/絵文字の場合のみ含まれ
 
 スマブラで見慣れた参戦画像を指定したアイコンで作成
 
-- **URL**: `{host}/smash`
+- **URL**: `https://api.miqx.jp/v1/smash`
 - **Method**: `POST`
+- **認証**: Bearer Token
 
 ### パラメーター
 
 | パラメーター | 説明                              | 必須 |
 | ------------ | --------------------------------- | ---- |
-| `key`        | APIキー                           | ✅   |
 | `img`        | アイコン画像（PNG/JPG、バイナリ） | ✅   |
+
+### 認証ヘッダー
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
 
 > [!WARNING]
 > 全ての`value`は**String**として送信してください。

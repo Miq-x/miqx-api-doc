@@ -23,11 +23,10 @@ struct Response {
 fn main() {
     // Set API key and endpoint
     const API_KEY: &str = "";
-    const ENDPOINT: &str = "http://localhost:4545/make"; // Replace with the correct endpoint URL
+    const ENDPOINT: &str = "https://api.miqx.jp/v1/make"; // Replace with the correct endpoint URL
 
     // Params
     let params = vec![
-        ("key", API_KEY),
         ("param", "make2"),
         ("name", "justin tuner🐟"),
         ("text", "Hi, Tuna"),
@@ -72,7 +71,11 @@ fn main() {
         }
     };
 
-    let response = client.post(ENDPOINT).multipart(form).send();
+    let response = client
+        .post(ENDPOINT)
+        .header("Authorization", format!("Bearer {}", API_KEY))
+        .multipart(form)
+        .send();
 
     let response = match response {
         Ok(resp) => resp,

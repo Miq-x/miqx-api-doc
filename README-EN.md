@@ -45,14 +45,14 @@ us for details.
 
 Create a collage image with the specified icon
 
-- **URL**: `{host}/make`
+- **URL**: `https://api.miqx.jp/v1/make`
 - **Method**: `POST`
+- **Authentication**: Bearer Token
 
 ### Parameters
 
 | Parameter | Description                         | Required |
 | --------- | ----------------------------------- | -------- |
-| `key`     | API key                             | ✅       |
 | `param`   | Parameter (e.g., "mono")            | ✅       |
 | `name`    | Speaker's name                      | ✅       |
 | `text`    | Speech                              | ✅       |
@@ -61,6 +61,12 @@ Create a collage image with the specified icon
 | `img`     | Icon image (PNG/JPG, binary)        | ✅       |
 | `meta`    | For drawing LINE emojis (see below) | ❌       |
 | `stamp`   | For drawing LINE stamps (see below) | ❌       |
+
+### Authentication Header
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
 
 <details>
 <summary>Functions Available Only on LINE</summary>
@@ -144,15 +150,21 @@ The `gif` field is included only for LINE's animated stamps/emojis.
 
 Create a Smash Bros. participation image with the specified icon
 
-- **URL**: `{host}/smash`
+- **URL**: `https://api.miqx.jp/v1/smash`
 - **Method**: `POST`
+- **Authentication**: Bearer Token
 
 ### Parameters
 
 | Parameter | Description                  | Required |
 | --------- | ---------------------------- | -------- |
-| `key`     | API key                      | ✅       |
 | `img`     | Icon image (PNG/JPG, binary) | ✅       |
+
+### Authentication Header
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
 
 > [!WARNING]
 > Please send all `value` as **String**.

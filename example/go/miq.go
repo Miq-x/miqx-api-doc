@@ -26,11 +26,10 @@ type Response struct {
 func main() {
 	// Set API key and endpoint
 	const API_KEY = ""
-	const ENDPOINT = "http://localhost:4545/make" // Replace with the correct endpoint URL
+	const ENDPOINT = "https://api.miqx.jp/v1/make" // Replace with the correct endpoint URL
 
 	// Params
 	params := map[string]string{
-		"key":   API_KEY,
 		"param": "make2",
 		"name":  "justin tuner🐟",
 		"text":  "Hi, Tuna",
@@ -90,6 +89,7 @@ func main() {
 		os.Exit(1)
 	}
 	req.Header.Set("Content-Type", writer.FormDataContentType())
+	req.Header.Set("Authorization", "Bearer "+API_KEY)
 
 	resp, err := client.Do(req)
 	if err != nil {

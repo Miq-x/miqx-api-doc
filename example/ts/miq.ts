@@ -18,11 +18,10 @@ interface ApiResponse {
 async function main() {
     // Set API key and endpoint
     const API_KEY = "";
-    const ENDPOINT = "http://localhost:4545/make"; // Replace with the correct endpoint URL
+    const ENDPOINT = "https://api.miqx.jp/v1/make"; // Replace with the correct endpoint URL
 
     // Params
     const params = {
-        key: API_KEY,
         param: "make2",
         name: "justin tuner🐟",
         text: "Hi, Tuna",
@@ -55,7 +54,10 @@ async function main() {
 
     try {
         const response: AxiosResponse<ApiResponse> = await axios.post(ENDPOINT, form, {
-            headers: form.getHeaders(),
+            headers: {
+                ...form.getHeaders(),
+                'Authorization': `Bearer ${API_KEY}`
+            },
             timeout: 60000, // 60 seconds
         });
 

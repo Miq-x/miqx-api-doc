@@ -9,11 +9,10 @@ import os
 
 # Set API key and endpoint
 API_KEY = ""
-ENDPOINT = "http://localhost:4545/make"  # Replace with the correct endpoint URL
+ENDPOINT = "https://api.miqx.jp/v1/make"  # Replace with the correct endpoint URL
 
 # Params
 params = {
-    "key": API_KEY,
     "param": "make2",
     "name": "justin tuner🐟",
     "text": "Hi, Tuna",
@@ -21,6 +20,11 @@ params = {
     "mid": "u66aa785c06415da8850a19a6e16c223f12345",
     "meta": "None",
     "stamp": "None",
+}
+
+# Headers for authentication
+headers = {
+    "Authorization": f"Bearer {API_KEY}"
 }
 
 # icon-path (jpg/png)
@@ -35,7 +39,7 @@ file = {"img": open(image_path, "rb")}
 
 # Send the request
 try:
-    response = requests.post(ENDPOINT, data=params, files=file, timeout=60)
+    response = requests.post(ENDPOINT, data=params, files=file, headers=headers, timeout=60)
     response.raise_for_status()
     res = response.json()
 except requests.exceptions.Timeout:

@@ -46,10 +46,9 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         // Set API key and endpoint
         const API_KEY = "";
-        const ENDPOINT = "http://localhost:4545/make"; // Replace with the correct endpoint URL
+        const ENDPOINT = "https://api.miqx.jp/v1/make"; // Replace with the correct endpoint URL
         // Params
         const params = {
-            key: API_KEY,
             param: "make2",
             name: "justin tuner🐟",
             text: "Hi, Tuna",
@@ -78,7 +77,7 @@ function main() {
         }
         try {
             const response = yield axios_1.default.post(ENDPOINT, form, {
-                headers: form.getHeaders(),
+                headers: Object.assign(Object.assign({}, form.getHeaders()), { 'Authorization': `Bearer ${API_KEY}` }),
                 timeout: 60000, // 60 seconds
             });
             const res = response.data;
